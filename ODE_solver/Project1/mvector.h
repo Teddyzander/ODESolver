@@ -43,4 +43,9 @@ inline MVector operator*(const double& lhs, const MVector rhs)
 	return temp;
 }
 
+inline double operator*(const MVector rhs, const MVector lhs)
+{
+	// check that rhs and lhs are the same size
+}
+
 #endif
