@@ -3,7 +3,8 @@
 
 #include <vector> // bring in vector library
 
-// Class that represents mathematical vector
+// class that represents mathematical vector.
+// trivial functions are defined here. Complex functions are defined in .cpp
 class MVector 
 {
 public:
