@@ -43,9 +43,45 @@ inline MVector operator*(const double& lhs, const MVector rhs)
 	return temp;
 }
 
+// operator for "vector / scalar"
+inline MVector operator/(const MVector lhs, const double& rhs)
+{
+	MVector temp = lhs; // return vector will be same dimension as rhs, so preallocate memory
+
+	// for each element in rhs, multiply by lhs and store value in same element in temp
+	for (int i = 0; i < temp.size(); i++)
+	{
+		temp[i] /= rhs;
+	}
+
+	return temp;
+}
+
 inline double operator*(const MVector rhs, const MVector lhs)
 {
 	// check that rhs and lhs are the same size
+}
+
+// ooperator for "<< vector" (prints vector to screen or file)
+std::ostream& operator<<(std::ostream& os, const MVector& v)
+{
+	// get size of v and then print out all elements, surrounded by brackets
+	int v_size = v.size();
+	os << "(";
+
+	for (int i = 0; i < v_size; i++)
+	{
+		os << v[i];
+
+		if (i != v_size - 1)
+		{
+			os << ", ";
+		}
+	}
+
+	os << ")";
+
+	return os;
 }
 
 #endif
