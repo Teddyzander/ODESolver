@@ -29,4 +29,18 @@ private:
 	std::vector<double> v;
 };
 
+// operator for "scalar * vector"
+inline MVector operator*(const double& lhs, const MVector rhs)
+{
+	MVector temp = rhs; // return vector will be same dimension as rhs, so preallocate memory
+
+	// for each element in rhs, multiply by lhs and store value in same element in temp
+	for (int i = 0; i < temp.size(); i++)
+	{
+		temp[i] *= lhs;
+	}
+
+	return temp;
+}
+
 #endif
