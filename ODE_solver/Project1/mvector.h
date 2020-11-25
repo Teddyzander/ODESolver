@@ -12,7 +12,7 @@ public:
 	// constructors
 	MVector() {}
 	explicit MVector(int n) : v(n) {}
-	MVector(int n, double x) : v(n, x) {}
+	MVector(int n, double x) : v(n, x)	{}
 	MVector(std::initializer_list<double> l) : v(l) {}
 
 	// element accessors 
