@@ -2,6 +2,7 @@
 #define MVECTOR_H
 
 #include <vector> // bring in vector library
+#include <assert.h> // bring in assert library for some minor error handling
 
 // class that represents mathematical vector.
 // trivial functions are defined here. Complex functions are defined in .cpp
@@ -29,8 +30,12 @@ private:
 	std::vector<double> v;
 };
 
+/*
+Operator overloads for vectors
+*/
+
 // operator for "scalar * vector"
-inline MVector operator*(const double& lhs, const MVector rhs)
+inline MVector operator*(const double& lhs, const MVector& rhs)
 {
 	MVector temp = rhs; // return vector will be same dimension as rhs, so preallocate memory
 
@@ -43,8 +48,17 @@ inline MVector operator*(const double& lhs, const MVector rhs)
 	return temp;
 }
 
+// operator for "vector * scalar"
+inline MVector operator*(const MVector& lhs, const double& rhs)
+{
+	// use scalar * operator so we only need to maintain one function (order is irrelevant)
+	MVector temp = rhs * lhs;
+
+	return temp;
+}
+
 // operator for "vector / scalar"
-inline MVector operator/(const MVector lhs, const double& rhs)
+inline MVector operator/(const MVector& lhs, const double& rhs)
 {
 	MVector temp = lhs; // return vector will be same dimension as rhs, so preallocate memory
 
@@ -57,9 +71,38 @@ inline MVector operator/(const MVector lhs, const double& rhs)
 	return temp;
 }
 
-inline double operator*(const MVector rhs, const MVector lhs)
+// operator for "vector + vector"
+inline MVector operator+(const MVector& lhs, const MVector& rhs)
 {
-	// check that rhs and lhs are the same size
+	// check vectors are of equal size
+	assert(lhs.size() == rhs.size() && "Vectors must have equal size");
+
+	MVector temp = lhs;
+
+	// for each element in lhs, add it to rhs element
+	for (int i = 0; i < temp.size(); i++)
+	{
+		temp[i] += rhs[i];
+	}
+
+	return temp;
+}
+
+// operator for "vector - vector"
+inline MVector operator-(const MVector& lhs, const MVector& rhs)
+{
+	// check vectors are of equal size
+	assert(lhs.size() == rhs.size() && "Vectors must have equal size");
+
+	MVector temp = lhs;
+
+	// for each element in lhs, subtract it to rhs element
+	for (int i = 0; i < temp.size(); i++)
+	{
+		temp[i] -= rhs[i];
+	}
+
+	return temp;
 }
 
 // ooperator for "<< vector" (prints vector to screen or file)
