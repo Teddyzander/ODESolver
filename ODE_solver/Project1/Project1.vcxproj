@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="mFunction.h" />
     <ClInclude Include="mvector.h" />
   </ItemGroup>
   <ItemGroup>
