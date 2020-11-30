@@ -140,7 +140,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="EulerSolve.h" />
     <ClInclude Include="functionF1.h" />
+    <ClInclude Include="functionF2.h" />
     <ClInclude Include="mFunction.h" />
     <ClInclude Include="mvector.h" />
   </ItemGroup>
