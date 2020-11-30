@@ -3,6 +3,7 @@
 
 #include <vector> // bring in vector library
 #include <assert.h> // bring in assert library for some minor error handling
+#include <iostream>
 
 // class that represents mathematical vector.
 // trivial functions are defined here. Complex functions are defined in .cpp
