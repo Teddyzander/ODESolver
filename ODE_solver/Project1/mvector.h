@@ -21,6 +21,13 @@ public:
 	MVector(int n, double x) : v(n, x)	{}
 	// create a vector using a list. Will be size l.size and contain the elements from l
 	MVector(std::initializer_list<double> l) : v(l) {}
+#
+	/*
+	functions
+	*/
+
+	// get number of elements in vector
+	int size() const { return v.size(); }
 
 	/*
 	element accessors 
@@ -30,8 +37,6 @@ public:
 	double &operator[](int index) { return v[index]; }
 	// access immutable element at index "index" (read only)
 	double operator[](int index) const { return v[index];  }
-	// get number of elements in vector
-	int size() const { return v.size(); }
 
 private:
 	std::vector<double> v;
@@ -42,6 +47,7 @@ Operator overloads for vectors
 */
 
 // operator for "scalar * vector"
+
 inline MVector operator*(const double& lhs, const MVector& rhs)
 {
 	MVector temp = rhs; // return vector will be same dimension as rhs, so preallocate memory
