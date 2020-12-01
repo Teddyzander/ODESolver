@@ -13,7 +13,8 @@ x (double): The value at x
 y (MVector): value(s) at y
 
 */
-struct SolverOutput {
+struct SolverOutput 
+{
 	int error;
 	double x;
 	MVector y;
