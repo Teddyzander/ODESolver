@@ -60,7 +60,7 @@ SolverOutput EulerSolve(int steps, double a, double b, MVector& y, MFunction& f,
 	}
 
 	// loop over
-	for (int i = 0; i < steps - 1; i++)
+	for (int i = 0; i < steps; i++)
 	{
 		x = a + i * h;
 
@@ -77,8 +77,9 @@ SolverOutput EulerSolve(int steps, double a, double b, MVector& y, MFunction& f,
 	// write final values to file
 	if (myFile.is_open())
 	{
-		myFile << "step: " << steps - 1 << "\t" << x << "\t" << y << std::endl;
+		myFile << "step: " << steps << "\t" << x << "\t" << y << std::endl;
 	}
+	
 
 
 	myFile.close();
@@ -134,7 +135,7 @@ SolverOutput RungeKutta(int steps, double a, double b, MVector& y, MFunction& f,
 	}
 
 	// loop over
-	for (int i = 0; i < steps - 1; i++)
+	for (int i = 0; i < steps; i++)
 	{
 		x = a + i * h;
 
@@ -156,9 +157,9 @@ SolverOutput RungeKutta(int steps, double a, double b, MVector& y, MFunction& f,
 
 	if (myFile.is_open())
 	{
-		myFile << "step: " << steps - 1 << "\t" << x << "\t" << y << std::endl;
+		myFile << "step: " << steps << "\t" << x << "\t" << y << std::endl;
 	}
-
+	
 
 	myFile.close();
 
