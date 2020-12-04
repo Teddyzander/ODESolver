@@ -3,7 +3,8 @@
 
 #include "mFunction.h"
 #include <string>
-#include<fstream>
+#include <fstream>
+#include <string>
 
 /*
 Data structure to contain outputs from methods for solving ODEs
@@ -34,9 +35,11 @@ save (bool): whether or not to save outputs to file
 
 OUTPUTS:
 
-result (SolverOutput): A struct holding estimated values for Y at x and an error code for file writing
+result (SolverOutput): A struct holding estimated values for Y at x and an 
+error code for file writing
 */
-SolverOutput EulerSolve(int steps, double a, double b, MVector& y, MFunction& f, bool save = false)
+SolverOutput EulerSolve(int steps, double a, double b, MVector& y, 
+	MFunction& f, bool save = false)
 {
 	std::ofstream myFile;
 	// Struct to hold return values and error value
@@ -66,7 +69,8 @@ SolverOutput EulerSolve(int steps, double a, double b, MVector& y, MFunction& f,
 
 		if (myFile.is_open())
 		{
-			myFile << "step: " << i << "\t" << x << "\t" << y << std::endl;
+			myFile << "step: " << i << "\t" << x << "\t" 
+				<< y << std::endl;
 		}
 
 		y = y + h * f(x, y);
@@ -77,7 +81,8 @@ SolverOutput EulerSolve(int steps, double a, double b, MVector& y, MFunction& f,
 	// write final values to file
 	if (myFile.is_open())
 	{
-		myFile << "step: " << steps << "\t" << x << "\t" << y << std::endl;
+		myFile << "step: " << steps << "\t" << x << "\t" 
+			<< y << std::endl;
 	}
 	
 
@@ -106,10 +111,12 @@ save (bool): whether or not to save outputs to file
 
 OUTPUTS:
 
-result (SolverOutput): A struct holding estimated values for Y at x and an error code (0 if no error)
+result (SolverOutput): A struct holding estimated values for Y at 
+x and an error code (0 if no error)
 */
 
-SolverOutput RungeKutta(int steps, double a, double b, MVector& y, MFunction& f, bool save = false)
+SolverOutput RungeKutta(int steps, double a, double b, MVector& y,
+	MFunction& f, bool save = false, bool print = false)
 {
 	std::ofstream myFile;
 	// Struct to hold return values and error value
@@ -141,7 +148,8 @@ SolverOutput RungeKutta(int steps, double a, double b, MVector& y, MFunction& f,
 
 		if (myFile.is_open())
 		{
-			myFile << "step: " << i << "\t" << x << "\t" << y << std::endl;
+			myFile << "step: " << i << "\t" << x << "\t" 
+				<< y << std::endl;
 		}
 
 		k1 = f(x, y);
@@ -150,6 +158,15 @@ SolverOutput RungeKutta(int steps, double a, double b, MVector& y, MFunction& f,
 		k4 = f(x + h, y + h * k3);
 
 		y = y + (h / 6) * (k1 + 2 * k2 + 2 * k3 + k4);
+
+		for (int i = 0; i < y.size(); i++)
+		{
+
+			if (std::to_string(y[i]) == "-nan(ind)" || std::to_string(y[i]) == "inf")
+			{
+				std::cout << "STOP" << std::endl;
+			}
+		}
 		
 	}
 
@@ -157,13 +174,18 @@ SolverOutput RungeKutta(int steps, double a, double b, MVector& y, MFunction& f,
 
 	if (myFile.is_open())
 	{
-		myFile << "step: " << steps << "\t" << x << "\t" << y << std::endl;
+		myFile << "step: " << steps << "\t" << x << "\t" 
+			<< y << std::endl;
 	}
 	
 
 	myFile.close();
 
-	std::cout << "x: " << x << "\ny: " << y << std::endl;
+	if (print == true)
+	{
+		std::cout << "x: " << x << "\ny: "
+			<< y << std::endl;
+	}
 
 	result.x = x;
 	result.y = y;
