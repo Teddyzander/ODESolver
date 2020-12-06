@@ -20,30 +20,36 @@ int main()
 
 	std::ofstream eulerErrorFile, rungekuttaErrorFile;
 
-	eulerErrorFile.open("eulerErrors.txt");
-	rungekuttaErrorFile.open("rungekuttaErrors.txt");
+	eulerErrorFile.open("eulerErrors2.txt");
+	rungekuttaErrorFile.open("rungekuttaErrors2.txt");
 
 	double act_y0 = 0.5;
 	double act_y1 = exp(1);
 
-	for (int i = 2; i < 1025; i = i * i)
+	for (int i = 1; i < 1025; i = i * 2)
 	{
 		MVector y1({ 0, 1 });
 		data_euler = EulerSolve(i, 0, 1, y1, f, true);
 		MVector y2({ 0, 1 });
 		data_rungekutta = RungeKutta(i, 0, 1, y2, f, true);
 
-		
 		if (eulerErrorFile.is_open())
 		{
-			eulerErrorFile << i << "\t" << data_euler.y[0] << "\t" << data_euler.y[1] << "\t" <<
-				abs(data_euler.y[0] - act_y0)  << "\t" << abs(data_euler.y[1] - act_y1) << std::endl;
+			eulerErrorFile << i << "\t" << data_euler.y[0] << 
+				"\t" << data_euler.y[1] << "\t" <<
+				abs(data_euler.y[0] - act_y0)  << 
+				"\t" << abs(data_euler.y[1] - act_y1) << 
+				std::endl;
 		}
 		
 		if (rungekuttaErrorFile.is_open())
 		{
-			rungekuttaErrorFile << i << "\t" << data_rungekutta.y[0] << "\t" << data_rungekutta.y[1] << "\t" <<
-				abs(data_rungekutta.y[0] - act_y0) << "\t" << abs(data_rungekutta.y[1] - act_y1) << std::endl;
+			rungekuttaErrorFile << i << "\t" << 
+				data_rungekutta.y[0] << "\t" << 
+				data_rungekutta.y[1] << "\t" <<
+				abs(data_rungekutta.y[0] - act_y0) << 
+				"\t" << abs(data_rungekutta.y[1] - act_y1) << 
+				std::endl;
 		}
 	}
 
@@ -76,26 +82,18 @@ int main()
 
 	std::cout << fdash_est << std::endl;
 
-	guess = 0.85;
-	beta = 0.4;
-
-	fdash_est = FSBoundary(guess, beta);
-
-	std::cout << fdash_est << std::endl;
-
 	/*
 	Calculate f''(0) for values of beta between 0 and 1
 	*/
 	
 	guess = 0.47;
 	beta = 0.0;
-
 	std::ofstream myFile;
 	myFile.open("fdashdash0.txt");
 
 	while (beta < 1.01)
 	{
-		double fdash_est = FSBoundary(guess, beta);
+		fdash_est = FSBoundary(guess, beta);
 
 		myFile << beta << "\t" << fdash_est << std::endl;
 		

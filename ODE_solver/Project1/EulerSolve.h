@@ -89,8 +89,6 @@ SolverOutput EulerSolve(int steps, double a, double b, MVector& y,
 
 	myFile.close();
 
-	std::cout << "x: " << x << "\ny: " << y << std::endl;
-
 	result.x = x;
 	result.y = y;
 
@@ -158,15 +156,6 @@ SolverOutput RungeKutta(int steps, double a, double b, MVector& y,
 		k4 = f(x + h, y + h * k3);
 
 		y = y + (h / 6) * (k1 + 2 * k2 + 2 * k3 + k4);
-
-		for (int i = 0; i < y.size(); i++)
-		{
-
-			if (std::to_string(y[i]) == "-nan(ind)" || std::to_string(y[i]) == "inf")
-			{
-				std::cout << "STOP" << std::endl;
-			}
-		}
 		
 	}
 

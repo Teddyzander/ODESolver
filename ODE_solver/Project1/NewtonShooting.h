@@ -9,7 +9,8 @@ beta (double): parameter for angle of the wedge fluid is flowing past
 guess (float): initial guess for f''(0)
 bound (int): upper bound for eta
 maxNewtonSteps (int): Maximum number to get solution
-RungeKuttaSteps (int): Number of RK$ steps for each iteration of the shooting method
+RungeKuttaSteps (int): Number of RK$ steps for each iteration of the 
+shooting method
 
 */
 
@@ -29,7 +30,8 @@ double FSBoundary(double guess = 0, double beta = 0, int bound = 5,
 		y[0] = 0; y[1] = 0; y[2] = guess;
 		y[3] = 0; y[4] = 0; y[5] = 1;
 
-		SolverOutput result = RungeKutta(RungeKuttaSteps, 0, bound, y, f);
+		SolverOutput result = RungeKutta(RungeKuttaSteps, 
+			0, bound, y, f);
 
 		phi = result.y[1] - 1;
 		phidash = result.y[4];
