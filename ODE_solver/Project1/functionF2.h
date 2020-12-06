@@ -5,8 +5,7 @@
 
 // Specific function class is derived from generic function class
 /*
-Function is in the form of FunctionF1(x, y) = [x,
-											   y[1]]
+Function is in the form of FunctionF1(x, y) = [x, y[1]]
 */
 class FunctionF2 : public MFunction
 {
@@ -24,6 +23,7 @@ public:
 
 		return temp;
 	}
+
 };
 
 #endif

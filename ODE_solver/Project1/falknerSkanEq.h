@@ -6,8 +6,11 @@
 // Specific function class is derived from generic function class
 /*
 Function is in the form of FunctionF1(x, y) = [y[1],
-											   y[2],
-											   kappa * (y[1]^2 - 1) - y[0] * y[2]]
+		y[2],
+		-y[0] * y[2] - beta * (1 - y[1] * y[1]),
+		y[4],
+		y[5],
+		-y[0] * y[5] - y[2] * y[3] + 2 * beta * y[1] * y[4]]
 */
 class FalknerSkanEq : public MFunction
 {
@@ -32,9 +35,10 @@ public:
 		return temp;
 	}
 
-	void SetBeta(double b) { beta = b; } // change kappa
+	void SetBeta(double b) { beta = b; } // change beta
 
 private:
+	// variable describing the angle of the wedge
 	double beta;
 };
 

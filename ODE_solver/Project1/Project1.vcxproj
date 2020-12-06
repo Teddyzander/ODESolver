@@ -146,6 +146,7 @@
     <ClInclude Include="functionF2.h" />
     <ClInclude Include="mFunction.h" />
     <ClInclude Include="mvector.h" />
+    <ClInclude Include="NewtonShooting.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
