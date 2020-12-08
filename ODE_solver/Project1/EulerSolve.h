@@ -53,7 +53,7 @@ SolverOutput EulerSolve(int steps, double a, double b, MVector& y,
 	// if user wants to save output, save to txt file
 	if (save == true) 
 	{ 
-		myFile.open("eulerSolver" + std::to_string(steps) + ".txt");
+		myFile.open("data/eulerSolver" + std::to_string(steps) + ".txt");
 
 		// check opened file successfully. If not, return error code 1
 		if (!myFile.is_open())
@@ -130,7 +130,7 @@ SolverOutput RungeKutta(int steps, double a, double b, MVector& y,
 	// if user wants to save output, save to txt file
 	if (save == true)
 	{
-		myFile.open("rungeKutta" + std::to_string(steps) + ".txt");
+		myFile.open("data/rungeKutta" + std::to_string(steps) + ".txt");
 
 		// check opened file successfully. If not, return error code 1
 		if (!myFile.is_open())

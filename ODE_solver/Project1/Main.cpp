@@ -20,8 +20,8 @@ int main()
 
 	std::ofstream eulerErrorFile, rungekuttaErrorFile;
 
-	eulerErrorFile.open("eulerErrors2.txt");
-	rungekuttaErrorFile.open("rungekuttaErrors2.txt");
+	eulerErrorFile.open("data/eulerErrors2.txt");
+	rungekuttaErrorFile.open("data/rungekuttaErrors2.txt");
 
 	double act_y0 = 0.5;
 	double act_y1 = exp(1);
@@ -89,7 +89,7 @@ int main()
 	guess = 0.47;
 	beta = 0.0;
 	std::ofstream myFile;
-	myFile.open("fdashdash0.txt");
+	myFile.open("data/fdashdash0.txt");
 
 	while (beta < 1.01)
 	{
