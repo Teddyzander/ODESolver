@@ -14,8 +14,8 @@ shooting method
 
 */
 
-double FSBoundary(double guess = 0, double beta = 0, int bound = 5,
-	int maxNewtonSteps = 100, int RungeKuttaSteps = 100)
+double FSBoundary(double guess = 0, double beta = 0, int bound = 10,
+	int maxNewtonSteps = 100, int RungeKuttaSteps = 1000)
 {
 	FalknerSkanEq f;
 	MVector y(6);

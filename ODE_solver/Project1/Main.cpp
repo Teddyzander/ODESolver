@@ -82,6 +82,25 @@ int main()
 
 	std::cout << fdash_est << std::endl;
 
+	guess = 1.18;
+	beta = 10.0/11.0;
+
+	fdash_est = FSBoundary(guess, beta);
+
+	std::cout << fdash_est << std::endl;
+
+	fdash_est = FSBoundary(guess, beta, 10, 100, 500);
+
+	std::cout << fdash_est << std::endl;
+
+	fdash_est = FSBoundary(guess, beta, 10, 100, 250);
+
+	std::cout << fdash_est << std::endl;
+
+	fdash_est = FSBoundary(guess, beta, 10, 100, 125);
+
+	std::cout << fdash_est << std::endl;
+
 	/*
 	Calculate f''(0) for values of beta between 0 and 1
 	*/
